@@ -85,23 +85,67 @@ section h3 {
 }
 
 .participants-list {
-  list-style: disc;
-  margin-left: 20px;
-  margin-bottom: 0;
-  padding-left: 0;
+  list-style: disc; /* show bullets */
+  margin: 0; /* reset outer margin */
+  padding-left: 24px; /* ensure room for the marker so it isn't overlapped */
 }
 
 .participants-list li {
-  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 6px;
   color: #333;
   border-bottom: 1px dotted #eee;
   font-size: 14px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(250,250,250,0.6));
+  border-radius: 4px;
+  /* ensure the marker is visible and not overlapped */
+  list-style-position: outside;
+}
+
+/* Make the list marker (disc) purple while keeping text color unchanged */
+.participants-list li::marker {
+  color: #6a1b9a; /* purple */
 }
 
 .no-participants {
   color: #666;
   font-style: italic;
   font-size: 14px;
+}
+
+.delete-participant {
+  background: transparent;
+  border: none;
+  color: #c62828;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.delete-participant:hover,
+.delete-participant:focus {
+  background-color: rgba(198,40,40,0.08);
+  outline: none;
+  color: #b71c1c;
+}
+
+/* Ensure SVG dustbin fits and inherits color */
+.delete-participant svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Slightly reduce padding so bullets and icon align nicely */
+.participants-list li .participant-name {
+  flex: 1 1 auto;
+  margin-right: 8px;
 }
 
 .form-group {
